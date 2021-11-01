@@ -7,16 +7,29 @@
 
 import UIKit
 
-class SpotListViewController: UIViewController {
+class SpotListViewController: UIViewController
+{
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
+    
     var spots = ["Island Creek Oysters", "El Pelon", "Shake Shack", "Pino's Pizza"]
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+        configureSegmentedControl()
+    }
+    
+    func configureSegmentedControl()
+    {
+        sortSegmentedControl.setTitleTextAttributes(<#T##attributes: [NSAttributedString.Key : Any]?##[NSAttributedString.Key : Any]?#>, for: <#T##UIControl.State#>)
+        
+        sortSegmentedControl.layer.borderColor = UIColor.white.cgColor
+        sortSegmentedControl.layer.borderWidth = 1.0
+        
     }
 }
 

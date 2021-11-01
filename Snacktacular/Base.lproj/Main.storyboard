@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -105,6 +106,22 @@
                             <constraint firstItem="Sra-dc-dUq" firstAttribute="top" secondItem="xz5-jq-VlX" secondAttribute="top" id="xi3-YN-xp6"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" id="lOl-wg-bnh">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="sXC-pv-JWy">
+                                <rect key="frame" x="20" y="10.5" width="374" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="PrimaryColor"/>
+                                <segments>
+                                    <segment title="A-Z"/>
+                                    <segment title="Distance"/>
+                                    <segment title="Rating"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="nBV-Ma-1hg">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="ezR-c0-uf3">
                             <connections>
@@ -117,7 +134,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="sortSegmentedControl" destination="sXC-pv-JWy" id="IQx-rR-T7E"/>
                         <outlet property="tableView" destination="Sra-dc-dUq" id="Dl6-kt-4fC"/>
                     </connections>
                 </viewController>
@@ -195,18 +214,50 @@
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBe-3i-yAo">
+                                        <rect key="frame" x="311" y="346" width="95" height="29"/>
+                                        <color key="backgroundColor" name="PrimaryColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="95" id="WXj-83-yTg"/>
+                                            <constraint firstAttribute="height" constant="29" id="djc-oI-xCm"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system" title="Rating">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ov4-Pb-WhZ">
+                                        <rect key="frame" x="208" y="346" width="95" height="29"/>
+                                        <color key="backgroundColor" name="PrimaryColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="Oem-LY-bae"/>
+                                            <constraint firstAttribute="width" constant="95" id="g3S-uk-0N0"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="camera.fill" catalog="system" title="Photo">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="EDD-Ne-Rak" firstAttribute="leading" secondItem="il7-Oq-EGP" secondAttribute="leading" constant="8" id="2Pg-07-hns"/>
                                     <constraint firstItem="pgD-BW-Tm6" firstAttribute="leading" secondItem="il7-Oq-EGP" secondAttribute="leading" id="3xg-kL-xUh"/>
+                                    <constraint firstItem="cBe-3i-yAo" firstAttribute="top" secondItem="pgD-BW-Tm6" secondAttribute="bottom" constant="4" id="9mr-1M-Zcg"/>
+                                    <constraint firstItem="cBe-3i-yAo" firstAttribute="leading" secondItem="Ov4-Pb-WhZ" secondAttribute="trailing" constant="8" id="AMd-GD-nhN"/>
                                     <constraint firstAttribute="trailing" secondItem="s5W-ZJ-Gaj" secondAttribute="trailing" constant="8" id="Nmj-Jg-7gf"/>
                                     <constraint firstItem="s5W-ZJ-Gaj" firstAttribute="top" secondItem="waQ-6X-FKv" secondAttribute="bottom" constant="2" id="VuZ-R6-Z5v"/>
                                     <constraint firstAttribute="trailing" secondItem="waQ-6X-FKv" secondAttribute="trailing" constant="8" id="fXf-a7-MF1"/>
+                                    <constraint firstItem="Ov4-Pb-WhZ" firstAttribute="top" secondItem="pgD-BW-Tm6" secondAttribute="bottom" constant="4" id="fkA-wD-4sN"/>
                                     <constraint firstItem="s5W-ZJ-Gaj" firstAttribute="leading" secondItem="il7-Oq-EGP" secondAttribute="leading" constant="8" id="g61-3T-ZxM"/>
                                     <constraint firstAttribute="trailing" secondItem="pgD-BW-Tm6" secondAttribute="trailing" id="heJ-Cz-TE4"/>
                                     <constraint firstItem="waQ-6X-FKv" firstAttribute="leading" secondItem="il7-Oq-EGP" secondAttribute="leading" constant="8" id="kpV-Wc-Nqo"/>
                                     <constraint firstItem="ymc-Ee-pH0" firstAttribute="top" secondItem="pgD-BW-Tm6" secondAttribute="bottom" constant="6" id="lQq-dT-YAy"/>
+                                    <constraint firstAttribute="trailing" secondItem="cBe-3i-yAo" secondAttribute="trailing" constant="8" id="mZf-tq-u16"/>
                                     <constraint firstItem="pgD-BW-Tm6" firstAttribute="top" secondItem="il7-Oq-EGP" secondAttribute="top" constant="242" id="mnF-rn-HlM"/>
                                     <constraint firstAttribute="height" constant="380" id="pvz-pp-Lba"/>
                                     <constraint firstItem="EDD-Ne-Rak" firstAttribute="top" secondItem="pgD-BW-Tm6" secondAttribute="bottom" constant="8" id="ruq-rA-pO8"/>
@@ -254,11 +305,21 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wak-BE-NCe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="PrimaryColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="izT-eu-W3f">
                         <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" name="PrimaryColor"/>
                     </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Fib-44-Dvv"/>
@@ -277,11 +338,21 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="K71-FL-dOO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" name="PrimaryColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="gRB-nN-WcS">
                         <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="PrimaryColor"/>
                     </toolbar>
                     <connections>
                         <segue destination="mKs-SV-Pjj" kind="relationship" relationship="rootViewController" id="d9r-hU-Ruq"/>
@@ -293,9 +364,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="d9r-hU-Ruq"/>
+        <segue reference="jKZ-ry-Jww"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <namedColor name="PrimaryColor">
+            <color red="0.85900002717971802" green="0.3529999852180481" blue="0.20800000429153442" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
