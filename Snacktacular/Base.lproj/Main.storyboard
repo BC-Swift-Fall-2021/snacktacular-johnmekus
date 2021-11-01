@@ -242,6 +242,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                     </button>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEd-HN-6nr">
+                                        <rect key="frame" x="0.0" y="62" width="414" height="180"/>
+                                    </mapView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -249,14 +252,18 @@
                                     <constraint firstItem="pgD-BW-Tm6" firstAttribute="leading" secondItem="il7-Oq-EGP" secondAttribute="leading" id="3xg-kL-xUh"/>
                                     <constraint firstItem="cBe-3i-yAo" firstAttribute="top" secondItem="pgD-BW-Tm6" secondAttribute="bottom" constant="4" id="9mr-1M-Zcg"/>
                                     <constraint firstItem="cBe-3i-yAo" firstAttribute="leading" secondItem="Ov4-Pb-WhZ" secondAttribute="trailing" constant="8" id="AMd-GD-nhN"/>
+                                    <constraint firstItem="MEd-HN-6nr" firstAttribute="top" secondItem="s5W-ZJ-Gaj" secondAttribute="bottom" constant="2" id="E0V-Iq-28G"/>
+                                    <constraint firstItem="MEd-HN-6nr" firstAttribute="leading" secondItem="il7-Oq-EGP" secondAttribute="leading" id="L6c-la-GVn"/>
                                     <constraint firstAttribute="trailing" secondItem="s5W-ZJ-Gaj" secondAttribute="trailing" constant="8" id="Nmj-Jg-7gf"/>
                                     <constraint firstItem="s5W-ZJ-Gaj" firstAttribute="top" secondItem="waQ-6X-FKv" secondAttribute="bottom" constant="2" id="VuZ-R6-Z5v"/>
                                     <constraint firstAttribute="trailing" secondItem="waQ-6X-FKv" secondAttribute="trailing" constant="8" id="fXf-a7-MF1"/>
                                     <constraint firstItem="Ov4-Pb-WhZ" firstAttribute="top" secondItem="pgD-BW-Tm6" secondAttribute="bottom" constant="4" id="fkA-wD-4sN"/>
                                     <constraint firstItem="s5W-ZJ-Gaj" firstAttribute="leading" secondItem="il7-Oq-EGP" secondAttribute="leading" constant="8" id="g61-3T-ZxM"/>
                                     <constraint firstAttribute="trailing" secondItem="pgD-BW-Tm6" secondAttribute="trailing" id="heJ-Cz-TE4"/>
+                                    <constraint firstItem="pgD-BW-Tm6" firstAttribute="top" secondItem="MEd-HN-6nr" secondAttribute="bottom" id="j6Q-g4-JYx"/>
                                     <constraint firstItem="waQ-6X-FKv" firstAttribute="leading" secondItem="il7-Oq-EGP" secondAttribute="leading" constant="8" id="kpV-Wc-Nqo"/>
                                     <constraint firstItem="ymc-Ee-pH0" firstAttribute="top" secondItem="pgD-BW-Tm6" secondAttribute="bottom" constant="6" id="lQq-dT-YAy"/>
+                                    <constraint firstAttribute="trailing" secondItem="MEd-HN-6nr" secondAttribute="trailing" id="lSY-YW-Okj"/>
                                     <constraint firstAttribute="trailing" secondItem="cBe-3i-yAo" secondAttribute="trailing" constant="8" id="mZf-tq-u16"/>
                                     <constraint firstItem="pgD-BW-Tm6" firstAttribute="top" secondItem="il7-Oq-EGP" secondAttribute="top" constant="242" id="mnF-rn-HlM"/>
                                     <constraint firstAttribute="height" constant="380" id="pvz-pp-Lba"/>
@@ -276,7 +283,11 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="2sb-y5-OJB"/>
-                        <barButtonItem title="Lookup Place" id="QVy-yQ-F9t"/>
+                        <barButtonItem title="Lookup Place" id="QVy-yQ-F9t">
+                            <connections>
+                                <action selector="locationButtonPressed:" destination="mKs-SV-Pjj" id="WwP-ck-OhY"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="HtD-cv-aOR">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MJd-Im-8sm">
@@ -293,6 +304,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addressTextField" destination="s5W-ZJ-Gaj" id="pyj-ko-Zui"/>
+                        <outlet property="mapView" destination="MEd-HN-6nr" id="0KY-cy-0EI"/>
                         <outlet property="nameTextField" destination="waQ-6X-FKv" id="t8d-PR-0pg"/>
                         <outlet property="ratingLabel" destination="ymc-Ee-pH0" id="47O-Vl-pNP"/>
                     </connections>
