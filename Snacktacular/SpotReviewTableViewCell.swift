@@ -11,6 +11,7 @@ class SpotReviewTableViewCell: UITableViewCell
 {
     @IBOutlet weak var reviewTitleLabel: UILabel!
     @IBOutlet weak var reviewTextLabel: UILabel!
+    @IBOutlet var starImageCollection: [UIImageView]!
     
     var review: Review!
     {
@@ -18,6 +19,12 @@ class SpotReviewTableViewCell: UITableViewCell
         {
             reviewTitleLabel.text = review.title
             reviewTextLabel.text = review.text
+            
+            for starImage in starImageCollection {
+                let imageName = (starImage.tag < review.rating ? "star.fill" : "star")
+                starImage.image = UIImage(systemName: imageName)
+                starImage.tintColor = (starImage.tag < review.rating ? .systemRed : .darkText)
+            }
         }
     }
 }
