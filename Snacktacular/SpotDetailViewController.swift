@@ -190,7 +190,7 @@ extension SpotDetailViewController: CLLocationManagerDelegate
                 print("😡 ERROR: retrieving placemark.")
             }
             // if there is no spot data, make device location the Spot
-            if self.spot.name == "" && self.spot.name == "" {
+            if self.spot.name == "" && self.spot.address == "" {
                 self.spot.name = name
                 self.spot.address = address
                 self.spot.coordinate = currentLocation.coordinate
