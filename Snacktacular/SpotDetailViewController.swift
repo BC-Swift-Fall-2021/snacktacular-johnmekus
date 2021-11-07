@@ -45,6 +45,14 @@ class SpotDetailViewController: UIViewController
         updateUserInterface()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reviews.loadData(spot: spot)
+        {
+            self.tableView.reloadData()
+        }
+    }
+    
     func setUpMapView()
     {
         let region = MKCoordinateRegion(center: spot.coordinate, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
@@ -87,6 +95,19 @@ class SpotDetailViewController: UIViewController
         }
     }
     
+    func saveCancelAlert(title: String, message: String, segueIdentifier: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
+            self.spot.saveData { (success) in
+                self.performSegue(withIdentifier: segueIdentifier, sender: nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func leaveViewController()
     {
         let isPresentingInAddMode = presentingViewController is UINavigationController
@@ -99,7 +120,6 @@ class SpotDetailViewController: UIViewController
             navigationController?.popViewController(animated: true)
         }
     }
-    
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem)
     {
@@ -132,10 +152,12 @@ class SpotDetailViewController: UIViewController
     
     @IBAction func ratingButtonPressed(_ sender: UIButton)
     {
-        //TODO: something
-        performSegue(withIdentifier: "AddReview", sender: nil)
+        if spot.documentID == "" {
+            saveCancelAlert(title: "This Venue Has Not Been Saved", message: "You must save this venue before you can review it.", segueIdentifier: "AddReview")
+        } else {
+            performSegue(withIdentifier: "AddReview", sender: nil)
+        }
     }
-    
 }
 
 extension SpotDetailViewController: GMSAutocompleteViewControllerDelegate {
@@ -251,8 +273,8 @@ extension SpotDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewCell", for: indexPath) as! SpotReviewTableViewCell
+        cell.review = reviews.reviewArray[indexPath.row]
         return cell
     }
     
