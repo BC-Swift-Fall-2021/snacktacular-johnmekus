@@ -17,6 +17,7 @@ class SpotDetailViewController: UIViewController
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     
@@ -26,6 +27,7 @@ class SpotDetailViewController: UIViewController
     let regionDistance: CLLocationDegrees = 750.0
     var locationManager: CLLocationManager!
     var reviews: Reviews!
+    var photos: Photos!
     var imagePickerController = UIImagePickerController()
     
     override func viewDidLoad()
@@ -39,6 +41,8 @@ class SpotDetailViewController: UIViewController
         
         tableView.delegate = self
         tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         imagePickerController.delegate = self
         getLocation()
         if spot == nil
@@ -53,7 +57,8 @@ class SpotDetailViewController: UIViewController
             navigationController?.setToolbarHidden(true, animated: true)
         }
         setUpMapView()
-        reviews = Reviews() // Eventually load data in updateUserInterface()
+        reviews = Reviews()
+        photos = Photos()
         updateUserInterface()
     }
     
@@ -67,6 +72,9 @@ class SpotDetailViewController: UIViewController
         reviews.loadData(spot: spot)
         {
             self.tableView.reloadData()
+        }
+        photos.loadData(spot: spot) {
+            self.collectionView.reloadData()
         }
     }
     
@@ -84,10 +92,10 @@ class SpotDetailViewController: UIViewController
     }
     
     func updateMap() {
-            mapView.removeAnnotations(mapView.annotations)
-            mapView.addAnnotation(spot)
-            mapView.setCenter(spot.coordinate, animated: true)
-        }
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(spot)
+        mapView.setCenter(spot.coordinate, animated: true)
+    }
     
     func updateFromInterface()
     {
@@ -124,9 +132,11 @@ class SpotDetailViewController: UIViewController
             destination.photo = photo
         case "ShowPhoto":
             let destination = segue.destination as! PhotoViewController
-        //TODO: replace below with collectionview code
-            //let selectedIndexPath = tableView.indexPathForSelectedRow!
-            //destination.review = reviews.reviewArray[selectedIndexPath.row]
+            guard let selectedIndexPath = collectionView.indexPathsForSelectedItems?.first else {
+                print("ERROR: couldn't get selected collectionView item")
+                return
+            }
+            destination.photo = photos.photoArray[selectedIndexPath.row]
             destination.spot = spot
         default:
             print("😡 Couldn't find a case for segue identifier \(segue.identifier). This should not have happened!")
@@ -181,7 +191,7 @@ class SpotDetailViewController: UIViewController
     
     func cameraOrLibraryAlert() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
+        
         let photoActionLibrary = UIAlertAction(title: "Photo Library", style: .default) { (_) in
             self.accessPhotoLibrary()
         }
@@ -189,11 +199,11 @@ class SpotDetailViewController: UIViewController
             self.accessCamera()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
+        
         alertController.addAction(photoActionLibrary)
         alertController.addAction(cameraAction)
         alertController.addAction(cancelAction)
-
+        
         present(alertController, animated: true, completion: nil)
     }
     
@@ -247,9 +257,9 @@ class SpotDetailViewController: UIViewController
 }
 
 extension SpotDetailViewController: GMSAutocompleteViewControllerDelegate {
-
-  // Handle the user's selection.
-  func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace)
+    
+    // Handle the user's selection.
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace)
     {
         spot.name = place.name ?? "Unknown Place"
         spot.address = place.formattedAddress ?? "Unknown Address"
@@ -257,16 +267,16 @@ extension SpotDetailViewController: GMSAutocompleteViewControllerDelegate {
         updateUserInterface()
         dismiss(animated: true, completion: nil)
     }
-
-  func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-    // TODO: handle the error.
-    print("Error: ", error.localizedDescription)
-  }
-
-  // User canceled the operation.
-  func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-    dismiss(animated: true, completion: nil)
-  }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 extension SpotDetailViewController: CLLocationManagerDelegate
@@ -276,7 +286,7 @@ extension SpotDetailViewController: CLLocationManagerDelegate
         locationManager = CLLocationManager()
         locationManager.delegate = self
     }
-
+    
     func handleAuthorizationStatus(status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined:
@@ -291,7 +301,7 @@ extension SpotDetailViewController: CLLocationManagerDelegate
             print("😡😡 DEVELOPER ALERT: Unknown case of status in handleAuthorizationStatus\(status)")
         }
     }
-
+    
     func showAlertToPrivacySettings(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
@@ -309,7 +319,7 @@ extension SpotDetailViewController: CLLocationManagerDelegate
         print("👮🏾‍♀️👮🏾‍♀️ Checking authentication status")
         handleAuthorizationStatus(status: status)
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("🗺 Updating location")
         let currentLocation = locations.last ?? CLLocation()
@@ -344,7 +354,7 @@ extension SpotDetailViewController: CLLocationManagerDelegate
             self.updateUserInterface()
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR: \(error.localizedDescription). Failed to get device location.")
     }
@@ -365,11 +375,24 @@ extension SpotDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
+extension SpotDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.photoArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! SpotPhotoCollectionViewCell
+        photoCell.spot = spot
+        photoCell.photo = photos.photoArray[indexPath.row]
+        return photoCell
+    }
+}
+
 extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
+        
         photo = Photo()
-
+        
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             photo.image = editedImage
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -379,16 +402,16 @@ extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigatio
             self.performSegue(withIdentifier: "AddPhoto", sender: nil)
         }
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     func accessPhotoLibrary() {
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
     }
-
+    
     func accessCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             imagePickerController.sourceType = .camera
