@@ -10,6 +10,7 @@
 		17201619273CC40E0094F66D /* UIView+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17201618273CC40E0094F66D /* UIView+addBorder.swift */; };
 		1720161B273CC51A0094F66D /* UIBarButtonItem+hide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1720161A273CC51A0094F66D /* UIBarButtonItem+hide.swift */; };
 		174F7A9E2742AFCF0008CAAF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F7A9D2742AFCF0008CAAF /* PhotoViewController.swift */; };
+		174F7AA02742B7190008CAAF /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174F7A9F2742B7190008CAAF /* Photo.swift */; };
 		176FEACC272F140500D329DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 176FEACB272F140500D329DF /* GoogleService-Info.plist */; };
 		178512B42730645900EDA0F5 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178512B32730645900EDA0F5 /* Spot.swift */; };
 		178512B627306C6E00EDA0F5 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178512B527306C6E00EDA0F5 /* UIViewController+alert.swift */; };
@@ -36,6 +37,7 @@
 		17201618273CC40E0094F66D /* UIView+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addBorder.swift"; sourceTree = "<group>"; };
 		1720161A273CC51A0094F66D /* UIBarButtonItem+hide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+hide.swift"; sourceTree = "<group>"; };
 		174F7A9D2742AFCF0008CAAF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		174F7A9F2742B7190008CAAF /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		176FEACB272F140500D329DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		178512B32730645900EDA0F5 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		178512B527306C6E00EDA0F5 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				178512B727306DAE00EDA0F5 /* Spots.swift */,
 				17C41F24273866F5007A0184 /* Review.swift */,
 				17C41F2627386786007A0184 /* Reviews.swift */,
+				174F7A9F2742B7190008CAAF /* Photo.swift */,
 				17C78EB9272F0CB20097ADB7 /* LoginViewController.swift */,
 				17F190FC2730359D003DB542 /* SpotListViewController.swift */,
 				17F190FE273037E3003DB542 /* SpotTableViewCell.swift */,
@@ -282,6 +285,7 @@
 				17F190FF273037E3003DB542 /* SpotTableViewCell.swift in Sources */,
 				174F7A9E2742AFCF0008CAAF /* PhotoViewController.swift in Sources */,
 				17C41F292738702D007A0184 /* SpotReviewTableViewCell.swift in Sources */,
+				174F7AA02742B7190008CAAF /* Photo.swift in Sources */,
 				178512BA2730726500EDA0F5 /* APIKeys.swift in Sources */,
 				178512B42730645900EDA0F5 /* Spot.swift in Sources */,
 				17C78EB8272F0CB20097ADB7 /* SceneDelegate.swift in Sources */,
