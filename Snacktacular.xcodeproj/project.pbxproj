@@ -18,6 +18,7 @@
 		178512B627306C6E00EDA0F5 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178512B527306C6E00EDA0F5 /* UIViewController+alert.swift */; };
 		178512B827306DAE00EDA0F5 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178512B727306DAE00EDA0F5 /* Spots.swift */; };
 		178512BA2730726500EDA0F5 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178512B92730726500EDA0F5 /* APIKeys.swift */; };
+		17A6C08B275405B7005716ED /* SnackUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6C08A275405B7005716ED /* SnackUser.swift */; };
 		17C41F2327385F93007A0184 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41F2227385F93007A0184 /* ReviewTableViewController.swift */; };
 		17C41F25273866F5007A0184 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41F24273866F5007A0184 /* Review.swift */; };
 		17C41F2727386786007A0184 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41F2627386786007A0184 /* Reviews.swift */; };
@@ -47,6 +48,7 @@
 		178512B527306C6E00EDA0F5 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		178512B727306DAE00EDA0F5 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
 		178512B92730726500EDA0F5 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		17A6C08A275405B7005716ED /* SnackUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackUser.swift; sourceTree = "<group>"; };
 		17C41F2227385F93007A0184 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		17C41F24273866F5007A0184 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		17C41F2627386786007A0184 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				17C41F2627386786007A0184 /* Reviews.swift */,
 				174F7A9F2742B7190008CAAF /* Photo.swift */,
 				174F7AA12742BF8C0008CAAF /* Photos.swift */,
+				17A6C08A275405B7005716ED /* SnackUser.swift */,
 				17C78EB9272F0CB20097ADB7 /* LoginViewController.swift */,
 				17F190FC2730359D003DB542 /* SpotListViewController.swift */,
 				17F190FE273037E3003DB542 /* SpotTableViewCell.swift */,
@@ -296,6 +299,7 @@
 				178512BA2730726500EDA0F5 /* APIKeys.swift in Sources */,
 				178512B42730645900EDA0F5 /* Spot.swift in Sources */,
 				17C78EB8272F0CB20097ADB7 /* SceneDelegate.swift in Sources */,
+				17A6C08B275405B7005716ED /* SnackUser.swift in Sources */,
 				174F7AA42742C1880008CAAF /* SpotPhotoCollectionViewCell.swift in Sources */,
 				178512B627306C6E00EDA0F5 /* UIViewController+alert.swift in Sources */,
 				17201619273CC40E0094F66D /* UIView+addBorder.swift in Sources */,
