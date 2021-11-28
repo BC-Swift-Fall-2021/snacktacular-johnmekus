@@ -19,6 +19,9 @@
 		178512B827306DAE00EDA0F5 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178512B727306DAE00EDA0F5 /* Spots.swift */; };
 		178512BA2730726500EDA0F5 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178512B92730726500EDA0F5 /* APIKeys.swift */; };
 		17A6C08B275405B7005716ED /* SnackUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6C08A275405B7005716ED /* SnackUser.swift */; };
+		17A6C08D27540E4D005716ED /* SnackUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6C08C27540E4D005716ED /* SnackUserViewController.swift */; };
+		17A6C08F27540E7B005716ED /* SnackUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6C08E27540E7B005716ED /* SnackUserTableViewCell.swift */; };
+		17A6C09127541042005716ED /* SnackUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6C09027541042005716ED /* SnackUsers.swift */; };
 		17C41F2327385F93007A0184 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41F2227385F93007A0184 /* ReviewTableViewController.swift */; };
 		17C41F25273866F5007A0184 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41F24273866F5007A0184 /* Review.swift */; };
 		17C41F2727386786007A0184 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41F2627386786007A0184 /* Reviews.swift */; };
@@ -49,6 +52,9 @@
 		178512B727306DAE00EDA0F5 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
 		178512B92730726500EDA0F5 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		17A6C08A275405B7005716ED /* SnackUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackUser.swift; sourceTree = "<group>"; };
+		17A6C08C27540E4D005716ED /* SnackUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackUserViewController.swift; sourceTree = "<group>"; };
+		17A6C08E27540E7B005716ED /* SnackUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackUserTableViewCell.swift; sourceTree = "<group>"; };
+		17A6C09027541042005716ED /* SnackUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackUsers.swift; sourceTree = "<group>"; };
 		17C41F2227385F93007A0184 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		17C41F24273866F5007A0184 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		17C41F2627386786007A0184 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 				174F7A9F2742B7190008CAAF /* Photo.swift */,
 				174F7AA12742BF8C0008CAAF /* Photos.swift */,
 				17A6C08A275405B7005716ED /* SnackUser.swift */,
+				17A6C09027541042005716ED /* SnackUsers.swift */,
 				17C78EB9272F0CB20097ADB7 /* LoginViewController.swift */,
 				17F190FC2730359D003DB542 /* SpotListViewController.swift */,
 				17F190FE273037E3003DB542 /* SpotTableViewCell.swift */,
@@ -118,6 +125,8 @@
 				174F7AA32742C1880008CAAF /* SpotPhotoCollectionViewCell.swift */,
 				17C41F2227385F93007A0184 /* ReviewTableViewController.swift */,
 				174F7A9D2742AFCF0008CAAF /* PhotoViewController.swift */,
+				17A6C08C27540E4D005716ED /* SnackUserViewController.swift */,
+				17A6C08E27540E7B005716ED /* SnackUserTableViewCell.swift */,
 				178512B527306C6E00EDA0F5 /* UIViewController+alert.swift */,
 				17201618273CC40E0094F66D /* UIView+addBorder.swift */,
 				1720161A273CC51A0094F66D /* UIBarButtonItem+hide.swift */,
@@ -296,11 +305,14 @@
 				174F7A9E2742AFCF0008CAAF /* PhotoViewController.swift in Sources */,
 				17C41F292738702D007A0184 /* SpotReviewTableViewCell.swift in Sources */,
 				174F7AA02742B7190008CAAF /* Photo.swift in Sources */,
+				17A6C08F27540E7B005716ED /* SnackUserTableViewCell.swift in Sources */,
+				17A6C08D27540E4D005716ED /* SnackUserViewController.swift in Sources */,
 				178512BA2730726500EDA0F5 /* APIKeys.swift in Sources */,
 				178512B42730645900EDA0F5 /* Spot.swift in Sources */,
 				17C78EB8272F0CB20097ADB7 /* SceneDelegate.swift in Sources */,
 				17A6C08B275405B7005716ED /* SnackUser.swift in Sources */,
 				174F7AA42742C1880008CAAF /* SpotPhotoCollectionViewCell.swift in Sources */,
+				17A6C09127541042005716ED /* SnackUsers.swift in Sources */,
 				178512B627306C6E00EDA0F5 /* UIViewController+alert.swift in Sources */,
 				17201619273CC40E0094F66D /* UIView+addBorder.swift in Sources */,
 			);
